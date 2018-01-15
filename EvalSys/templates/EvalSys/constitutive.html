@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!-- {% load static %} -->
+<html>
+
+{% block body %}
+<div class="container">
+	<h3>If column 2 is not one of the typical or reasonable parts or elements or constitutive material of the entity in column 1, mark it as Unreasonable. Otherwise, mark is as Reasonable.</h3>
+	<table style="width: 100%" border="1px">
+		<tr>
+			<th>Entity</th>
+			<th>Part or Element</th>
+			<th>Unreasonable?</th>
+		</tr>
+		{% for k, v in dic_const.items %}
+			{% for j in v %}
+				<tr>
+					<th> {{ k }}</th>
+					<th>{{ j }}</th>
+					<th>
+						<form method="post">
+							{% csrf_token %}
+							{{ form.as_p }}
+						</form>
+					</th>
+				</tr>
+			{% endfor %}
+		{% endfor %}
+	</table>
+	<form method="post">
+		{% csrf_token %}
+		<button type="submit">Submit</button>
+	</form>
+ 
+</div>
+
+{% endblock %}
+
+</html>

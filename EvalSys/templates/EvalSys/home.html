@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<div class="container">
+	<h3>If column 2 is not one of the typical or reasonable functions of the entity in column 1, mark it as Unreasonable. Otherwise, mark is as Reasonable.</h3>
+	<table style="width: 100%" border="1px">
+		<tr>
+			<th>Entity</th>
+			<th>Function</th>
+			<th>Unreasonable?</th>
+		</tr>
+		<form method="POST" id="telicform">
+			{% csrf_token %}
+			{% for entry in object_list %}			
+				<tr>
+					<th>{{entry.node}}</th>
+					<th>{{entry.qualevalue}}</th>
+ 					<th> {{ form.as_p }} </th>
+ 					<th>
+ 						<input type="submit" name="submit" value="Submit" form="telicform">
+ 					</th>
+ 					
+				</tr>		
+			{% endfor %}
+		</form>
+ 	</table> <br>
+
+ 		
+</div>
+
+
+
+</html>
